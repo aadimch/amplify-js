@@ -1,5 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
+import { RetryStrategy } from '@aws-amplify/core/dist/esm/singleton/API/types';
 import { DocumentType } from '@aws-amplify/core/internals/utils';
 
 export type GetInput = ApiInput<RestApiOptionsBase>;
@@ -35,6 +36,7 @@ export interface RestApiOptionsBase {
 	 * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/withCredentials}
 	 */
 	withCredentials?: boolean;
+	// retryStrategy?: RetryStrategy;
 }
 
 type Headers = Record<string, string>;
@@ -78,6 +80,8 @@ export interface ApiInput<Options> {
 	 * Path of the REST API.
 	 */
 	path: string;
+
+	retryStrategy?: RetryStrategy;
 	/**
 	 * Options to overwrite the REST API call behavior.
 	 */
